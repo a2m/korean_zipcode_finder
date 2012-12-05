@@ -6,6 +6,7 @@ require 'engine' if defined?(Rails)
 
 require 'net/http'
 require 'open-uri'
+require 'iconv'
 require 'nokogiri'
 
 
@@ -14,7 +15,8 @@ module KoreanZipcodeFinder
   Struct.new("KoreanZipcodeFinder", "zipcode", "zipcode_01", "zipcode_02", "address", "original_address")
   
   def self.find_zipcode(dong_name)
-    keyword = dong_name.force_encoding('euc-kr')
+    iconv = Iconv.new("euc-kr", "utf-8//IGNORE")
+    keyword = iconv.iconv(dong_name.strip)
 
     response = Net::HTTP.post_form URI.parse(Configuration::URL), {'regkey' => api_key, 'target' => 'post', 'query' => keyword}
     nodes = Nokogiri::XML(response.body).css("item")
