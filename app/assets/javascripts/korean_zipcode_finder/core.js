@@ -9,8 +9,8 @@ KoreanZipcodeFinder = (function() {
     this.close_modal_handler = $.proxy(this.close_modal_handler, this);
     this.escape_pressed_handler = $.proxy(this.escape_pressed_handler, this);
 
-    $(document).on("focus", ".address_area .zipcode_01", this.init);
-    $(document).on("focus", ".address_area .zipcode_02", this.init);
+//   $(document).on("focus", ".address_area .zipcode_01", this.init);
+//    $(document).on("focus", ".address_area .zipcode_02", this.init);
     $(document).on("click", ".address_area .find_zipcode_btn", this.init);
 
     $(document).on("submit", ".korean_zipcode_finder_modal_wrapper .find_zipcode_form", this.find_zipcode_handler);
