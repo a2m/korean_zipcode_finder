@@ -2,6 +2,7 @@
 
 module KoreanZipcodeFinder
   class ZipcodesController < ApplicationController
+    skip_load_and_authorize_resource
     layout false
     
     def new
@@ -13,4 +14,3 @@ module KoreanZipcodeFinder
     end
   end
 end
-
